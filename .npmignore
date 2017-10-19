@@ -1,4 +1,8 @@
-demo.gif
-demo_android.gif
+.idea
 Demo
+node_modules
+screenshots
 .DS_Store
+.eslintrc
+.gitignore
+README.md
