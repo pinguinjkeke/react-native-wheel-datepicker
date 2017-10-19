@@ -1,26 +1,30 @@
 {
-  "name": "rn-wheel-picker",
+  "name": "react-native-wheel-datepicker",
   "version": "2.1.0",
-  "description": "React native cross platform picker.",
+  "description": "React native cross platform iOS-style picker and datepicker.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wusuopu/react-native-wheel-picker.git"
+    "url": "git+https://github.com/pinguinjkeke/react-native-wheel-datepicker.git"
   },
   "keywords": [
     "react-native",
+    "datepicker",
     "picker",
     "wheel"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Alexander Avakov <yaavakov@gmail.com>",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wusuopu/react-native-wheel-picker/issues"
+    "url": "https://github.com/pinguinjkeke/react-native-wheel-datepicker/issues"
   },
-  "homepage": "https://github.com/wusuopu/react-native-wheel-picker#readme",
+  "homepage": "https://github.com/pinguinjkeke/react-native-wheel-datepicker#readme",
+  "dependencies": {
+    "moment": "^2.19.1"
+  },
   "devDependencies": {
     "babel-eslint": "^8.0.0",
     "eslint": "^4.7.2",
@@ -29,9 +33,6 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.4.0",
     "eslint-plugin-react-native": "^3.1.0"
-  },
-  "dependencies": {
-    "moment": "^2.19.1"
   },
   "peerDependencies": {
     "moment": ">=2.0.0",

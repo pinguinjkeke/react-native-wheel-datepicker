@@ -1,9 +1,9 @@
-# rn-wheel-picker
+# react-native-wheel-datepicker
 
 A iOS style picker and datepicker components for ReactNative.
 
 - Original repository by @lesliesam: [react-native-wheel-picker](https://github.com/lesliesam/react-native-wheel-picker).
-- Fork with added the real cross platform behavior and datepicker by @wusuopu [react-native-wheel-picker](https://github.com/wusuopu/react-native-wheel-picker).
+- Fork by @wusuopu who added the real cross platform behavior and datepicker [react-native-wheel-picker](https://github.com/wusuopu/react-native-wheel-picker).
 
 This is the third fork of repository and its targeted to support and maintain current code. I asked github team to make it my own as is all pull requests goes directly to @lesliesam original repository but it seems to be no longer maintained.
 
