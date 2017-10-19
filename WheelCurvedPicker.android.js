@@ -67,10 +67,8 @@ class Item extends PureComponent {
     label: PropTypes.string.isRequired,
   };
 
-  render() {
-    // These items don't get rendered directly.
-    return null;
-  }
+  // These items don't get rendered directly.
+  render: () => null;
 }
 
 WheelCurvedPicker.Item = Item;

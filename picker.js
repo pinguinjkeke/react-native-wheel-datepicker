@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#d3d3d3',
     height: 220,
   },
-  picker__item: {
+  pickerItem: {
     color: '#333333',
     fontSize: 26,
   },
@@ -46,7 +46,7 @@ export default class Picker extends Component {
       <WheelCurvedPicker
         {...props}
         style={[styles.picker, style]}
-        itemStyle={Object.assign({}, styles.picker__item, itemStyle)}
+        itemStyle={[styles.pickerItem, itemStyle]}
         selectedValue={this.state.selectedValue}
         onValueChange={this.handleChange}
       >
