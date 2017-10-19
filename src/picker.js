@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import WheelCurvedPicker from './WheelCurvedPicker';
-const PickerItem = WheelCurvedPicker.Item;
 
 const styles = StyleSheet.create({
   picker: {
@@ -51,7 +50,7 @@ export default class Picker extends Component {
         onValueChange={this.handleChange}
       >
         {pickerData.map((data, index) => (
-          <PickerItem
+          <Picker.Item
             key={index}
             value={data.value || data}
             label={data.label || data.toString()}

@@ -2,7 +2,7 @@
   "name": "react-native-wheel-datepicker",
   "version": "2.1.0",
   "description": "React native cross platform iOS-style picker and datepicker.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
