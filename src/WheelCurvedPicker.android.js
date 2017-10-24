@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ColorPropType, requireNativeComponent, View } from 'react-native';
+import { ColorPropType, requireNativeComponent, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 const stateFromProps = (props) => {
@@ -23,7 +23,7 @@ class WheelCurvedPicker extends PureComponent {
     data: PropTypes.array,
     textColor: ColorPropType,
     textSize: PropTypes.number,
-    itemStyle: PropTypes.object,
+    itemStyle: Text.propTypes.style,
     itemSpace: PropTypes.number,
     onValueChange: PropTypes.func.isRequired,
     selectedValue: PropTypes.any,
@@ -48,9 +48,10 @@ class WheelCurvedPicker extends PureComponent {
   }
 
   render() {
+    const { children, ...otherProps } = this.props;
     return (
       <WheelCurvedPickerNative
-        {...this.props}
+        {...otherProps}
         onValueChange={this.onValueChange}
         data={this.state.items}
         textColor={this.props.textColor}
