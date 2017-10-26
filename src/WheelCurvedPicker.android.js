@@ -49,13 +49,12 @@ class WheelCurvedPicker extends PureComponent {
 
   render() {
     const { children, ...otherProps } = this.props;
+
     return (
       <WheelCurvedPickerNative
         {...otherProps}
         onValueChange={this.onValueChange}
         data={this.state.items}
-        textColor={this.props.textColor}
-        textSize={this.props.textSize}
         selectedIndex={parseInt(this.state.selectedIndex, 10)}
       />
     );
