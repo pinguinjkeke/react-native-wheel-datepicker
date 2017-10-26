@@ -37,7 +37,7 @@ class WheelCurvedPicker extends PureComponent {
     textColor: '#333',
   };
 
-  onValueChange = (e: Event) => this.props.onValueChange(e.nativeEvent.data);
+  onValueChange = ({ nativeEvent: { data } }) => this.props.onValueChange(data);
 
   componentWillMount() {
     this.setState(stateFromProps(this.props));
