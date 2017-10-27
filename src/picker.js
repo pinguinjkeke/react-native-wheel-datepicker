@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import WheelCurvedPicker from './WheelCurvedPicker';
 
@@ -19,10 +19,10 @@ const styles = StyleSheet.create({
 
 export default class Picker extends Component {
   static propTypes = {
-    itemStyle: PropTypes.object,
+    itemStyle: Text.propTypes.style,
     onValueChange: PropTypes.func.isRequired,
     pickerData: PropTypes.array.isRequired,
-    style: PropTypes.object,
+    style: View.propTypes.style,
     selectedValue: PropTypes.any,
   };
 

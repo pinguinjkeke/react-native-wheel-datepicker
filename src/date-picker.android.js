@@ -118,6 +118,7 @@ export default class DatePicker extends PureComponent {
     return [
       <View key='year' style={styles.picker}>
         <Picker
+          style={this.props.style}
           ref={(year) => { this.yearComponent = year; }}
           selectedValue={this.state.date.getFullYear()}
           pickerData={this.state.yearRange}
@@ -126,6 +127,7 @@ export default class DatePicker extends PureComponent {
       </View>,
       <View key='month' style={styles.picker}>
         <Picker
+          style={this.props.style}
           ref={(month) => { this.monthComponent = month; }}
           selectedValue={this.state.date.getMonth() + 1}
           pickerData={this.state.monthRange}
@@ -134,6 +136,7 @@ export default class DatePicker extends PureComponent {
       </View>,
       <View key='date' style={styles.picker}>
         <Picker
+          style={this.props.style}
           ref={(date) => { this.dateComponent = date; }}
           selectedValue={this.state.date.getDate()}
           pickerData={this.state.dayRange}
