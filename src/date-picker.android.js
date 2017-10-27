@@ -22,6 +22,7 @@ export default class DatePicker extends PureComponent {
     minimumDate: PropTypes.instanceOf(Date),
     mode: PropTypes.oneOf(['date', 'time', 'datetime']),
     onDateChange: PropTypes.func.isRequired,
+    style: View.propTypes.style,
   };
 
   static defaultProps = {
