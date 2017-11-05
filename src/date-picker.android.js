@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { ColorPropType, StyleSheet, View } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Picker from './picker';
@@ -8,6 +8,15 @@ const styles = StyleSheet.create({
   picker: {
     flex: 1,
   },
+  row: {
+    flexDirection: 'row',
+  },
+});
+
+const stylesFromProps = props => ({
+  itemSpace: props.itemSpace,
+  textColor: props.textColor,
+  textSize: props.textSize,
 });
 
 export default class DatePicker extends PureComponent {
@@ -23,6 +32,9 @@ export default class DatePicker extends PureComponent {
     mode: PropTypes.oneOf(['date', 'time', 'datetime']),
     onDateChange: PropTypes.func.isRequired,
     style: View.propTypes.style,
+    textColor: ColorPropType,
+    textSize: PropTypes.number,
+    itemSpace: PropTypes.number,
   };
 
   static defaultProps = {
@@ -31,6 +43,10 @@ export default class DatePicker extends PureComponent {
     maximumDate: moment().add(10, 'years').toDate(),
     minimumDate: moment().add(-10, 'years').toDate(),
     date: new Date(),
+    style: null,
+    textColor: '#333',
+    textSize: 26,
+    itemSpace: 20,
   };
 
   constructor(props) {
@@ -108,7 +124,7 @@ export default class DatePicker extends PureComponent {
 
   render() {
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={styles.row}>
         {['date', 'datetime'].includes(this.props.mode) && this.datePicker}
         {['time', 'datetime'].includes(this.props.mode) && this.timePicker}
       </View>
@@ -116,9 +132,12 @@ export default class DatePicker extends PureComponent {
   }
 
   get datePicker() {
+    const propsStyles = stylesFromProps(this.props);
+
     return [
       <View key='year' style={styles.picker}>
         <Picker
+          {...propsStyles}
           style={this.props.style}
           ref={(year) => { this.yearComponent = year; }}
           selectedValue={this.state.date.getFullYear()}
@@ -128,6 +147,7 @@ export default class DatePicker extends PureComponent {
       </View>,
       <View key='month' style={styles.picker}>
         <Picker
+          {...propsStyles}
           style={this.props.style}
           ref={(month) => { this.monthComponent = month; }}
           selectedValue={this.state.date.getMonth() + 1}
@@ -137,6 +157,7 @@ export default class DatePicker extends PureComponent {
       </View>,
       <View key='date' style={styles.picker}>
         <Picker
+          {...propsStyles}
           style={this.props.style}
           ref={(date) => { this.dateComponent = date; }}
           selectedValue={this.state.date.getDate()}
@@ -147,6 +168,8 @@ export default class DatePicker extends PureComponent {
     ];
   }
   get timePicker() {
+    const propsStyles = stylesFromProps(this.props);
+
     const [hours, minutes] = [[], []];
 
     for (let i = 0; i <= 24; i += 1) {
@@ -161,6 +184,7 @@ export default class DatePicker extends PureComponent {
       <View key='hour' style={styles.picker}>
         <Picker
           ref={(hour) => { this.hourComponent = hour; }}
+          {...propsStyles}
           selectedValue={this.state.date.getHours()}
           pickerData={hours}
           onValueChange={this.onHourChange}
@@ -169,6 +193,7 @@ export default class DatePicker extends PureComponent {
       <View key='minute' style={styles.picker}>
         <Picker
           ref={(minute) => { this.minuteComponent = minute; }}
+          {...propsStyles}
           selectedValue={this.state.date.getMinutes()}
           pickerData={minutes}
           onValueChange={this.onMinuteChange}
