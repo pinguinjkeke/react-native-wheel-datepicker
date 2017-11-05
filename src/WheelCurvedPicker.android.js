@@ -1,17 +1,16 @@
 import React, { PureComponent } from 'react';
-import { ColorPropType, requireNativeComponent, View, Text } from 'react-native';
+import { ColorPropType, requireNativeComponent, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 const stateFromProps = (props) => {
   let selectedIndex = 0;
-  const items = [];
 
-  React.Children.forEach(props.children, (child, index) => {
-    if (child.props.value === props.selectedValue) {
+  const items = props.children.map(({ props: { value, label } }, index) => {
+    if (value === props.selectedValue) {
       selectedIndex = index;
     }
 
-    items.push({ value: child.props.value, label: child.props.label });
+    return { value, label };
   });
 
   return { selectedIndex, items };
