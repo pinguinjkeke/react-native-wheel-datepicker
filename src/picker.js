@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { ColorPropType, StyleSheet, View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import WheelCurvedPicker from './WheelCurvedPicker';
 
@@ -10,16 +10,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#d3d3d3',
     height: 220,
   },
-  pickerItem: {
-    color: '#333333',
-    fontSize: 26,
-  },
 });
 
 
 export default class Picker extends Component {
   static propTypes = {
-    itemStyle: Text.propTypes.style,
+    textColor: ColorPropType,
+    textSize: PropTypes.number,
+    itemSpace: PropTypes.number,
+    itemStyle: View.propTypes.style,
     onValueChange: PropTypes.func.isRequired,
     pickerData: PropTypes.array.isRequired,
     style: View.propTypes.style,
@@ -27,6 +26,9 @@ export default class Picker extends Component {
   };
 
   static defaultProps = {
+    textColor: '#333',
+    textSize: 26,
+    itemSpace: 20,
     itemStyle: null,
     style: null,
   };
@@ -41,13 +43,12 @@ export default class Picker extends Component {
   };
 
   render() {
-    const { pickerData, itemStyle, style, ...props } = this.props;
+    const { pickerData, style, ...props } = this.props;
 
     return (
       <WheelCurvedPicker
         {...props}
         style={[styles.picker, style]}
-        itemStyle={[styles.pickerItem, itemStyle]}
         selectedValue={this.state.selectedValue}
         onValueChange={this.handleChange}
       >
