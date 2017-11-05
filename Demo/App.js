@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StatusBar, StyleSheet } from 'react-native';
-import { Picker, DatePicker } from 'rn-wheel-picker';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { DatePicker, Picker } from 'react-native-wheel-datepicker';
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  scroll: {
+    flex: 1,
+  },
   text__info: {
     backgroundColor: 'green',
     paddingTop: 10,
@@ -15,31 +21,35 @@ const styles = StyleSheet.create({
 });
 
 export default class App extends Component {
-  static propTypes = {};
-  static defaultProps = {};
-
   state = {};
 
   render() {
     return (
-      <View style={{ flex: 1, marginTop: 30 }}>
-        <StatusBar hidden />
-
-        <ScrollView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <ScrollView style={styles.scroll}>
           <View>
             <Text style={styles.text__info}>
               current date: {this.state.date && this.state.date.toJSON()}
             </Text>
-            <DatePicker mode="date" onDateChange={date => this.setState({ date })} />
+            <DatePicker
+              mode="date"
+              textSize={36}
+              textColor='red'
+              onDateChange={date => this.setState({ date })}
+            />
 
             <View style={styles.separator} />
             <Text style={styles.text__info}>
               current time: {this.state.time && this.state.time.toJSON()}
             </Text>
-            <DatePicker mode="time" onDateChange={time => this.setState({ time })} />
+            <DatePicker
+              mode="time"
+              onDateChange={time => this.setState({ time })}
+            />
 
             <View style={styles.separator} />
             <Text style={styles.text__info}>
+              Datepicker with labels{"\n"}
               current datetime: {this.state.datetime && this.state.datetime.toJSON()}
             </Text>
             <DatePicker
@@ -50,9 +60,12 @@ export default class App extends Component {
 
             <View style={styles.separator} />
             <Text style={styles.text__info}>
+              Picker with custom styles{"\n"}
               current selectedValue: {this.state.value}
             </Text>
             <Picker
+              textColor='red'
+              textSize={36}
               style={{ flex: 1 }}
               selectedValue={1}
               pickerData={[1, 2, 3, 4, 5, 6]}
