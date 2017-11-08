@@ -26,25 +26,25 @@ Run command
 For apps using RN 0.32 or higher, please run
 
 ```
-npm i react-native-wheel-picker --save
+npm i react-native-wheel-datepicker --save
 ```
 
 For apps using RN 0.31 or less, please run
 
 ```
-npm install --save --save-exact react-native-wheel-picker@1.9.0
+npm install --save --save-exact react-native-wheel-datepicker@1.9.0
 ```
 
 Configration:
 
 ```
-react-native link rn-wheel-picker
+react-native link react-native-wheel-datepicker
 ```
 
 ## Example code
 
 ```jsx
-import { Picker, DatePicker } from 'rn-wheel-picker';
+import { Picker, DatePicker } from 'react-native-wheel-datepicker';
 
 // use DatePicker
 <DatePicker
