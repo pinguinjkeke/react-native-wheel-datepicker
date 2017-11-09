@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
-import { ColorPropType, requireNativeComponent, View, ViewPropTypes } from 'react-native';
+import { ColorPropType, requireNativeComponent, View, ViewPropTypes as RNViewPropTypes } from 'react-native';
 import PropTypes from 'prop-types';
+
+const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 const stateFromProps = (props) => {
   let selectedIndex = 0;
