@@ -58,7 +58,7 @@ export default class Picker extends Component {
           <PickerItem
             key={index}
             value={typeof data.value !== 'undefined' ? data.value : data}
-            label={data.label || data.toString()}
+            label={typeof data.label !== 'undefined' ? data.label : data.toString()}
           />
         ))}
       </WheelCurvedPicker>
