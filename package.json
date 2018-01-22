@@ -1,6 +1,6 @@
 {
   "name": "react-native-wheel-datepicker",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "React native cross platform iOS-style picker and datepicker.",
   "main": "src/index.js",
   "scripts": {
