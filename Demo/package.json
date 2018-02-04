@@ -14,7 +14,8 @@
 		"prop-types": "^15.6.0",
 		"react": "16.0.0-beta.5",
 		"react-native": "0.49.3",
-		"react-native-wheel-datepicker": "../"
+		"react-native-wheel-datepicker": "../",
+		"react-native-custom-datepicker-ios": "^0.0.2"
 	},
 	"devDependencies": {
 		"babel-jest": "21.2.0",

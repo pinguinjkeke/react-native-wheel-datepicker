@@ -3371,8 +3371,12 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
+react-native-custom-datepicker-ios@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-custom-datepicker-ios/-/react-native-custom-datepicker-ios-0.0.2.tgz#582276eeebfb80dbbd839e7faef50e0d15a7e114"
+
 react-native-wheel-datepicker@../:
-  version "2.1.5"
+  version "2.1.10"
   dependencies:
     moment "^2.19.1"
 

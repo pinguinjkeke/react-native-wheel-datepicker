@@ -41,6 +41,45 @@ Configration:
 react-native link react-native-wheel-datepicker
 ```
 
+## Ingegration with CustomDatePickerIOS
+
+By default, package provides default DatePickerIOS on the iOS side to simplify usage on both platforms.
+
+You can install [react-native-custom-datepicker-ios](https://github.com/pinguinjkeke/react-native-wheel-datepicker) package
+if you need textColor functionality on IOS platform.
+
+Just install:
+```
+npm i react-native-custom-datepicker-ios
+// or
+yarn add react-native-custom-datepicker-ios
+```
+link dependencies:
+```
+react-native link react-native-custom-datepicker-ios
+```
+And register CustomDatePickerIOS inside react-native-wheel-datepicker package.
+```js
+import { registerCustomDatePickerIOS } from 'react-native-wheel-datepicker';
+import CustomDatePickerIOS from 'react-native-custom-datepicker-ios';
+
+registerCustomDatePickerIOS(CustomDatePickerIOS);
+```
+Then you can use textColored components for both platforms inside render function!
+```jsx
+import { DatePicker } from 'react-native-wheel-datepicker';
+
+// ...
+render() {
+  return (
+    <DatePicker
+      mode="date"
+      textColor="green"
+    />
+  )
+}
+```
+
 ## Example code
 
 ```jsx

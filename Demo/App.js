@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { DatePicker, Picker } from 'react-native-wheel-datepicker';
+import { Picker, registerCustomDatePickerIOS } from 'react-native-wheel-datepicker';
+import CustomDatePickerIOS from 'react-native-custom-datepicker-ios';
+
+const DatePicker = registerCustomDatePickerIOS(CustomDatePickerIOS);
 
 const styles = StyleSheet.create({
   container: {
@@ -21,7 +24,11 @@ const styles = StyleSheet.create({
 });
 
 export default class App extends Component {
-  state = {};
+  state = {
+    firstDate: new Date(),
+    secondDate: new Date(),
+    thirdDate: new Date(),
+  };
 
   render() {
     return (
@@ -32,10 +39,12 @@ export default class App extends Component {
               current date: {this.state.date && this.state.date.toJSON()}
             </Text>
             <DatePicker
+              date={this.state.firstDate}
               mode="date"
               textSize={36}
               textColor='red'
               onDateChange={date => this.setState({ date })}
+              style={{ width: '100%' }}
             />
 
             <View style={styles.separator} />
@@ -43,6 +52,7 @@ export default class App extends Component {
               current time: {this.state.time && this.state.time.toJSON()}
             </Text>
             <DatePicker
+              date={this.state.secondDate}
               mode="time"
               onDateChange={time => this.setState({ time })}
             />
@@ -53,6 +63,7 @@ export default class App extends Component {
               current datetime: {this.state.datetime && this.state.datetime.toJSON()}
             </Text>
             <DatePicker
+              date={this.state.thirdDate}
               mode="datetime"
               onDateChange={datetime => this.setState({ datetime })}
               labelUnit={{ year: 'Y', month: 'M', date: 'D' }}
