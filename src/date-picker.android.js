@@ -77,7 +77,7 @@ export default class DatePicker extends PureComponent {
 
     this.state.yearRange.push({ value: minYear, label: `${minYear}${this.props.labelUnit.year}` });
 
-    for (let i = minYear + 1; i <= maxYear + 1; i += 1) {
+    for (let i = minYear + 1; i <= maxYear; i += 1) {
       this.state.yearRange.push({ value: i, label: `${i}${this.props.labelUnit.year}` });
     }
   }
