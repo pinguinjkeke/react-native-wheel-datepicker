@@ -28,6 +28,7 @@ export default class DatePicker extends PureComponent {
       month: PropTypes.string,
       date: PropTypes.string,
     }),
+    order: PropTypes.string,
     date: PropTypes.instanceOf(Date).isRequired,
     maximumDate: PropTypes.instanceOf(Date),
     minimumDate: PropTypes.instanceOf(Date),
@@ -41,6 +42,7 @@ export default class DatePicker extends PureComponent {
 
   static defaultProps = {
     labelUnit: { year: '', month: '', date: '' },
+    order: 'D-M-Y',
     mode: 'date',
     maximumDate: moment().add(10, 'years').toDate(),
     minimumDate: moment().add(-10, 'years').toDate(),
@@ -160,39 +162,55 @@ export default class DatePicker extends PureComponent {
   get datePicker() {
     const propsStyles = stylesFromProps(this.props);
 
-    return [
-      <View key='year' style={styles.picker}>
-        <Picker
-          {...propsStyles}
-          style={this.props.style}
-          ref={(year) => { this.yearComponent = year; }}
-          selectedValue={this.state.date.getFullYear()}
-          pickerData={this.state.yearRange}
-          onValueChange={this.onYearChange}
-        />
-      </View>,
-      <View key='month' style={styles.picker}>
-        <Picker
-          {...propsStyles}
-          style={this.props.style}
-          ref={(month) => { this.monthComponent = month; }}
-          selectedValue={this.state.date.getMonth() + 1}
-          pickerData={this.state.monthRange}
-          onValueChange={this.onMonthChange}
-        />
-      </View>,
-      <View key='date' style={styles.picker}>
-        <Picker
-          {...propsStyles}
-          style={this.props.style}
-          ref={(date) => { this.dateComponent = date; }}
-          selectedValue={this.state.date.getDate()}
-          pickerData={this.state.dayRange}
-          onValueChange={this.onDateChange}
-        />
-      </View>,
-    ];
+    const { order } = this.props;
+
+    if (!order.includes('D') && !order.includes('M') && !order.includes('Y')) {
+      throw new Error(`WheelDatePicker: you are using order prop wrong, default value is 'D-M-Y'`);
+    }
+
+    return this.props.order.split('-').map((key) => {
+      switch (key) {
+        case 'D': return (
+          <View key='date' style={styles.picker}>
+            <Picker
+              {...propsStyles}
+              style={this.props.style}
+              ref={(date) => { this.dateComponent = date; }}
+              selectedValue={this.state.date.getDate()}
+              pickerData={this.state.dayRange}
+              onValueChange={this.onDateChange}
+            />
+          </View>
+        );
+        case 'M': return (
+          <View key='month' style={styles.picker}>
+            <Picker
+              {...propsStyles}
+              style={this.props.style}
+              ref={(month) => { this.monthComponent = month; }}
+              selectedValue={this.state.date.getMonth() + 1}
+              pickerData={this.state.monthRange}
+              onValueChange={this.onMonthChange}
+            />
+          </View>
+        );
+        case 'Y': return (
+          <View key='year' style={styles.picker}>
+            <Picker
+              {...propsStyles}
+              style={this.props.style}
+              ref={(year) => { this.yearComponent = year; }}
+              selectedValue={this.state.date.getFullYear()}
+              pickerData={this.state.yearRange}
+              onValueChange={this.onYearChange}
+            />
+          </View>
+        );
+        default: return null;
+      }
+    })
   }
+
   get timePicker() {
     const propsStyles = stylesFromProps(this.props);
 
