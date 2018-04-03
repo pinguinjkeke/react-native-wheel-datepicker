@@ -27,7 +27,7 @@ import java.util.List;
 public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 
     private final EventDispatcher mEventDispatcher;
-    private List<Integer> mValueData;
+    private List<Object> mValueData;
 
     public ReactWheelCurvedPicker(ReactContext reactContext) {
         super(reactContext);
@@ -72,7 +72,7 @@ public class ReactWheelCurvedPicker extends WheelCurvedPicker {
 		mHandler.post(this);
     }
 
-    public void setValueData(List<Integer> data) {
+    public void setValueData(List<Object> data) {
         mValueData = data;
     }
 
@@ -85,9 +85,9 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
 
     public static final String EVENT_NAME = "wheelCurvedPickerPageSelected";
 
-    private final int mValue;
+    private final Object mValue;
 
-    protected ItemSelectedEvent(int viewTag,  int value) {
+    protected ItemSelectedEvent(int viewTag, Object value) {
         super(viewTag);
         mValue = value;
     }
@@ -104,7 +104,14 @@ class ItemSelectedEvent extends Event<ItemSelectedEvent> {
 
     private WritableMap serializeEventData() {
         WritableMap eventData = Arguments.createMap();
-        eventData.putInt("data", mValue);
+
+        Class mValueClass = mValue.getClass();
+        if (mValueClass == Integer.class) {
+            eventData.putInt("data", (Integer) mValue);
+        } else if (mValueClass == String.class) {
+            eventData.putString("data", mValue.toString());
+        }
+
         return eventData;
     }
 }

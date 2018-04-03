@@ -4,6 +4,7 @@ import android.graphics.Color;
 
 import com.aigestudio.wheelpicker.core.AbstractWheelPicker;
 import com.facebook.react.bridge.ReadableArray;
+import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.common.MapBuilder;
 import com.facebook.react.uimanager.PixelUtil;
@@ -45,11 +46,17 @@ public class ReactWheelCurvedPickerManager extends SimpleViewManager<ReactWheelC
     @ReactProp(name="data")
     public void setData(ReactWheelCurvedPicker picker, ReadableArray items) {
         if (picker != null) {
-            ArrayList<Integer> valueData = new ArrayList<>();
+            ArrayList<Object> valueData = new ArrayList<>();
             ArrayList<String> labelData = new ArrayList<>();
             for (int i = 0; i < items.size(); i ++) {
                 ReadableMap itemMap = items.getMap(i);
-                valueData.add(itemMap.getInt("value"));
+
+                if (itemMap.getType("value") == ReadableType.String) {
+                    valueData.add(itemMap.getString("value"));
+                } else if (itemMap.getType("value") == ReadableType.Number) {
+                    valueData.add(itemMap.getInt("value"));
+                }
+
                 labelData.add(itemMap.getString("label"));
             }
             picker.setValueData(valueData);
