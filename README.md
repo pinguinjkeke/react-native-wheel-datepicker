@@ -45,7 +45,7 @@ react-native link react-native-wheel-datepicker
 
 By default, package provides default DatePickerIOS on the iOS side to simplify usage on both platforms.
 
-You can install [react-native-custom-datepicker-ios](https://github.com/pinguinjkeke/react-native-wheel-datepicker) package
+You can install [react-native-custom-datepicker-ios](https://github.com/pinguinjkeke/react-native-custom-datepicker-ios) package
 if you need textColor functionality on IOS platform.
 
 Just install:
