@@ -56,22 +56,13 @@ export default class DatePicker extends PureComponent {
   constructor(props) {
     super(props);
 
-    const {
-      date,
-      minimumDate,
-      maximumDate,
-      labelUnit,
-    } = props;
+    const { date, minimumDate, maximumDate, labelUnit } = props;
 
-    this.state = {
-      date,
-      monthRange: [],
-      yearRange: [],
-    };
+    this.state = { date, monthRange: [], yearRange: [] };
 
     this.newValue = {};
 
-    this._parseDate(date);
+    this.parseDate(date);
 
     const mdate = moment(date);
 
@@ -94,15 +85,13 @@ export default class DatePicker extends PureComponent {
 
   componentWillReceiveProps(nextProps) {
     if (this.state.date !== nextProps.date) {
-      this._parseDate(nextProps.date);
+      this.parseDate(nextProps.date);
 
-      this.setState({
-        date: nextProps.date,
-      });
+      this.setState({ date: nextProps.date });
     }
   }
 
-  _parseDate = (date) => {
+  parseDate = (date) => {
     const mdate = moment(date);
 
     ['year', 'month', 'date', 'hour', 'minute'].forEach((s) => { this.newValue[s] = mdate.get(s); });
