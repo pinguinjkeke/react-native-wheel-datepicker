@@ -19,6 +19,7 @@ const stylesFromProps = props => ({
   itemSpace: props.itemSpace,
   textColor: props.textColor,
   textSize: props.textSize,
+  style: props.style,
 });
 
 export default class DatePicker extends PureComponent {
