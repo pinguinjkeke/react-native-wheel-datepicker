@@ -26,7 +26,7 @@ export default class DatePicker extends PureComponent {
   static propTypes = {
     labelUnit: PropTypes.shape({
       year: PropTypes.string,
-      month: PropTypes.string,
+      month: PropTypes.array,
       date: PropTypes.string,
     }),
     order: PropTypes.string,
@@ -42,7 +42,11 @@ export default class DatePicker extends PureComponent {
   };
 
   static defaultProps = {
-    labelUnit: { year: '', month: '', date: '' },
+    labelUnit: {
+      year: '',
+      month: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      date: ''
+    },
     order: 'D-M-Y',
     mode: 'date',
     maximumDate: moment().add(10, 'years').toDate(),
@@ -74,7 +78,7 @@ export default class DatePicker extends PureComponent {
     const maxYear = maximumDate.getFullYear();
 
     for (let i = 1; i <= 12; i += 1) {
-      this.state.monthRange.push({ value: i, label: `${i}${labelUnit.month}` });
+      this.state.monthRange.push({ value: i, label: `${labelUnit.month[i - 1]}` });
     }
 
     this.state.yearRange.push({ value: minYear, label: `${minYear}${labelUnit.year}` });
