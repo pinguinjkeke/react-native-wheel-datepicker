@@ -73,8 +73,9 @@ export default class DatePicker extends PureComponent {
     const minYear = minimumDate.getFullYear();
     const maxYear = maximumDate.getFullYear();
 
+    const norwegianMonths = ['jan.', 'feb.', 'mars', 'april', 'mai', 'juni', 'juli', 'aug.', 'sept.', 'okt.', 'nov.', 'des.'];
     for (let i = 1; i <= 12; i += 1) {
-      this.state.monthRange.push({ value: i, label: `${i}${labelUnit.month}` });
+      this.state.monthRange.push({ value: i, label: `${norwegianMonths[i-1]}` });
     }
 
     this.state.yearRange.push({ value: minYear, label: `${minYear}${labelUnit.year}` });
@@ -207,11 +208,11 @@ export default class DatePicker extends PureComponent {
     const [hours, minutes] = [[], []];
 
     for (let i = 0; i <= 24; i += 1) {
-      hours.push(i);
+      hours.push({ value: i, label: `${i < 10 ? 0 : ''}${i}`});
     }
 
-    for (let i = 0; i <= 59; i += 1) {
-      minutes.push(i);
+    for (let i = 0; i <= 59; i += 10) {
+      minutes.push({ value: i, label: `${i < 10 ? 0 : ''}${i}`});
     }
 
     return [
