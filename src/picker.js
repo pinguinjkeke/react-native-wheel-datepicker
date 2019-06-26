@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { ColorPropType, StyleSheet, View, ViewPropTypes as RNViewPropTypes, Text } from 'react-native';
+import { ColorPropType, StyleSheet, View, TextPropTypes as RNTextPropTypes, ViewPropTypes as RNViewPropTypes, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import WheelCurvedPicker from './WheelCurvedPicker';
 
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
+const TextPropTypes = RNTextPropTypes || Text.propTypes;
 
 const PickerItem = WheelCurvedPicker.Item;
 
@@ -20,7 +21,7 @@ export default class Picker extends Component {
     textColor: ColorPropType,
     textSize: PropTypes.number,
     itemSpace: PropTypes.number,
-    itemStyle: ViewPropTypes.style,
+    itemStyle: TextPropTypes.style,
     onValueChange: PropTypes.func.isRequired,
     pickerData: PropTypes.array.isRequired,
     style: ViewPropTypes.style,
