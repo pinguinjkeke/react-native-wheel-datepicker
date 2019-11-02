@@ -35,6 +35,7 @@ export default class DatePicker extends PureComponent {
     minimumDate: PropTypes.instanceOf(Date),
     mode: PropTypes.oneOf(['date', 'time', 'datetime']),
     onDateChange: PropTypes.func.isRequired,
+    minuteInterval: PropTypes.oneOf(1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30),
     style: ViewPropTypes.style,
     textColor: ColorPropType,
     textSize: PropTypes.number,
@@ -203,6 +204,7 @@ export default class DatePicker extends PureComponent {
 
   get timePicker() {
     const propsStyles = stylesFromProps(this.props);
+    const { minuteInterval } = this.props;
 
     const [hours, minutes] = [[], []];
 
@@ -211,7 +213,9 @@ export default class DatePicker extends PureComponent {
     }
 
     for (let i = 0; i <= 59; i += 1) {
-      minutes.push(i);
+      if (!minuteInterval || i % minuteInterval === 0) {
+        minutes.push(i);
+      }
     }
 
     return [
