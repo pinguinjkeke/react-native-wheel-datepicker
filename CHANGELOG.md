@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.226](https://github.com/davidgovea/react-native-wheel-datepicker/compare/v0.0.225...v0.0.226) (2019-11-02)
+
+
+### Features
+
+* implement `minuteInterval` on android ([1ac13dc](https://github.com/davidgovea/react-native-wheel-datepicker/commit/1ac13dc540c9985aa7a4cc0e762cafca0082e72f))
+
 ### [0.0.225](https://github.com/davidgovea/react-native-wheel-datepicker/compare/v0.0.224...v0.0.225) (2019-11-02)
 
 
