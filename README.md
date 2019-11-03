@@ -1,5 +1,9 @@
 # react-native-wheel-datepicker
 
+[![NPM](https://img.shields.io/npm/v/@davidgovea/react-native-wheel-datepicker.svg)](https://www.npmjs.com/package/@davidgovea/react-native-wheel-datepicker)
+[![Build Status](https://img.shields.io/circleci/project/github/davidgovea/react-native-wheel-datepicker.svg)](https://circleci.com/gh/davidgovea/react-native-wheel-datepicker)
+[![](https://img.shields.io/codecov/c/github/davidgovea/react-native-wheel-datepicker.svg)](https://codecov.io/gh/davidgovea/react-native-wheel-datepicker)
+
 A iOS style picker and datepicker components for ReactNative.
 
 - Original repository by @lesliesam: [react-native-wheel-picker](https://github.com/lesliesam/react-native-wheel-picker).

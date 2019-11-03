@@ -1,3 +1,4 @@
+coverage
 android/build
 *.iml
 android/.idea/workspace.xml
