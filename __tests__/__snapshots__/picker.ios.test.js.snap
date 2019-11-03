@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`basic scenario 1`] = `
+exports[`ios Picker snapshot 1`] = `
 <PickerIOS
   itemSpace={20}
   itemStyle={null}
