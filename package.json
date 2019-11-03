@@ -3,6 +3,7 @@
   "version": "0.0.229",
   "description": "React native cross platform iOS-style picker and datepicker.",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "test": "jest --coverage",
     "cov:send": "codecov"
