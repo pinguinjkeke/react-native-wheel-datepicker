@@ -35,6 +35,7 @@ export default class DatePicker extends PureComponent {
     minimumDate: PropTypes.instanceOf(Date),
     mode: PropTypes.oneOf(['date', 'time', 'datetime']),
     onDateChange: PropTypes.func.isRequired,
+    use12Hours: PropTypes.bool,
     minuteInterval: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30]),
     style: ViewPropTypes.style,
     textColor: ColorPropType,
@@ -48,6 +49,7 @@ export default class DatePicker extends PureComponent {
     mode: 'date',
     maximumDate: moment().add(10, 'years').toDate(),
     minimumDate: moment().add(-10, 'years').toDate(),
+    use12Hours: false,
     date: new Date(),
     style: null,
     textColor: '#333',
@@ -99,6 +101,10 @@ export default class DatePicker extends PureComponent {
     ['year', 'month', 'date', 'hour', 'minute'].forEach((s) => { this.newValue[s] = mdate.get(s); });
   }
 
+  get meridiem() {
+    return this.newValue.hour >= 12 ? 'PM' : 'AM';
+  }
+
   onYearChange = (year) => {
     const oldYear = this.newValue.year;
 
@@ -122,13 +128,33 @@ export default class DatePicker extends PureComponent {
   };
 
   onHourChange = (hour) => {
-    this.newValue.hour = hour;
+    if (this.props.use12Hours && hour < 12 && this.meridiem === 'PM') {
+      // +12hrs for PM times (except 12)
+      this.newValue.hour = hour + 12;
+    } else if (this.props.use12Hours && hour === 12 && this.meridiem === 'AM') {
+      // 12 AM -> 0:00
+      this.newValue.hour = 0;
+    } else {
+      this.newValue.hour = hour;
+    }
+
     this.props.onDateChange(this.getValue());
   };
 
   onMinuteChange = (minute) => {
     this.newValue.minute = minute;
     this.props.onDateChange(this.getValue());
+  };
+
+  onPeriodChange = (period) => {
+    if (this.meridiem !== period) {
+      let newHour = (this.newValue.hour + 12) % 24;
+      if (period === 'AM') {
+        newHour %= 12;
+      }
+      this.newValue.hour = newHour;
+      this.props.onDateChange(this.getValue());
+    }
   };
 
   genDateRange(dayNum) {
@@ -199,22 +225,30 @@ export default class DatePicker extends PureComponent {
         );
         default: return null;
       }
-    })
+    });
   }
 
   get timePicker() {
     const propsStyles = stylesFromProps(this.props);
-    const { minuteInterval } = this.props;
+    const { minuteInterval, use12Hours } = this.props;
 
     const [hours, minutes] = [[], []];
 
-    for (let i = 0; i <= 24; i += 1) {
+    const maxHours = use12Hours ? 12 : 23;
+    const minHours = use12Hours ? 1 : 0;
+    let initialHours = this.state.date.getHours();
+    if (use12Hours && initialHours > 12) initialHours -= 12;
+
+    for (let i = minHours; i <= maxHours; i += 1) {
       hours.push(i);
     }
 
     for (let i = 0; i <= 59; i += 1) {
       if (!minuteInterval || i % minuteInterval === 0) {
-        minutes.push(i);
+        minutes.push({
+          value: i,
+          label: i > 9 ? `${i}` : `0${i}`,
+        });
       }
     }
 
@@ -223,7 +257,7 @@ export default class DatePicker extends PureComponent {
         <Picker
           ref={(hour) => { this.hourComponent = hour; }}
           {...propsStyles}
-          selectedValue={this.state.date.getHours()}
+          selectedValue={initialHours}
           pickerData={hours}
           onValueChange={this.onHourChange}
         />
@@ -237,6 +271,15 @@ export default class DatePicker extends PureComponent {
           onValueChange={this.onMinuteChange}
         />
       </View>,
+      use12Hours && <View key='period' style={styles.picker}>
+        <Picker
+          ref={(period) => { this.periodComponent = period; }}
+          {...propsStyles}
+          selectedValue={moment(this.state.date).format('A')}
+          pickerData={['AM', 'PM']}
+          onValueChange={this.onPeriodChange}
+        />
+      </View>,
     ];
   }
 
@@ -245,7 +288,7 @@ export default class DatePicker extends PureComponent {
     const currentYear = this.newValue.year;
     const currentDay = this.newValue.date;
 
-    let dayRange = this.state.dayRange;
+    let { dayRange } = this.state;
     let dayNum = dayRange.length;
 
     if (oldMonth !== currentMonth || oldYear !== currentYear) {
