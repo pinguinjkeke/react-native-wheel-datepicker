@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.230](https://github.com/davidgovea/react-native-wheel-datepicker/compare/v0.0.229...v0.0.230) (2019-11-03)
+
+
+### Features
+
+* add typescript definition ([#9](https://github.com/davidgovea/react-native-wheel-datepicker/issues/9)) ([53ff827](https://github.com/davidgovea/react-native-wheel-datepicker/commit/53ff8279d1ff5a88b1d9c751a35208be717d21c8))
+
 ### [0.0.229](https://github.com/davidgovea/react-native-wheel-datepicker/compare/v0.0.228...v0.0.229) (2019-11-03)
 
 
