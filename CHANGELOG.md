@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.228](https://github.com/davidgovea/react-native-wheel-datepicker/compare/v0.0.227...v0.0.228) (2019-11-03)
+
+
+### Features
+
+* Added 12-hour AM/PM mode for Android ([6f13ad5](https://github.com/davidgovea/react-native-wheel-datepicker/commit/6f13ad57cdd4be9674900097c595878b0af31aca))
+
 ### [0.0.227](https://github.com/davidgovea/react-native-wheel-datepicker/compare/v0.0.226...v0.0.227) (2019-11-03)
 
 
