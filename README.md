@@ -64,7 +64,7 @@ react-native link react-native-custom-datepicker-ios
 ```
 And register CustomDatePickerIOS inside react-native-wheel-datepicker package.
 ```js
-import { registerCustomDatePickerIOS } from 'react-native-wheel-datepicker';
+import { registerCustomDatePickerIOS } from '@davidgovea/react-native-wheel-datepicker';
 import CustomDatePickerIOS from 'react-native-custom-datepicker-ios';
 
 registerCustomDatePickerIOS(CustomDatePickerIOS);
