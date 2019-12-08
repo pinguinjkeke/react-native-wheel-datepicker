@@ -87,7 +87,7 @@ export default class DatePicker extends PureComponent {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.state.date !== nextProps.date) {
       this.parseDate(nextProps.date);
 
