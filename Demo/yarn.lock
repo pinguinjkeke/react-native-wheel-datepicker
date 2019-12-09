@@ -3376,7 +3376,7 @@ react-native-custom-datepicker-ios@^0.0.2:
   resolved "https://registry.yarnpkg.com/react-native-custom-datepicker-ios/-/react-native-custom-datepicker-ios-0.0.2.tgz#582276eeebfb80dbbd839e7faef50e0d15a7e114"
 
 react-native-wheel-datepicker@../:
-  version "2.1.10"
+  version "2.2.3"
   dependencies:
     moment "^2.19.1"
 
@@ -4337,8 +4337,8 @@ write-file-atomic@^2.1.0:
     signal-exit "^3.0.2"
 
 ws@^1.1.0:
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.4.tgz#57f40d036832e5f5055662a397c4de76ed66bf61"
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-1.1.5.tgz#cbd9e6e75e09fc5d2c90015f21f0c40875e0dd51"
   dependencies:
     options ">=0.0.5"
     ultron "1.0.x"
