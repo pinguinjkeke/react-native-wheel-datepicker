@@ -21,7 +21,6 @@ export default class Picker extends Component {
     textColor: ColorPropType,
     textSize: PropTypes.number,
     itemSpace: PropTypes.number,
-    itemStyle: TextPropTypes.style,
     onValueChange: PropTypes.func.isRequired,
     pickerData: PropTypes.array.isRequired,
     style: ViewPropTypes.style,
@@ -32,7 +31,6 @@ export default class Picker extends Component {
     textColor: '#333',
     textSize: 26,
     itemSpace: 20,
-    itemStyle: null,
     style: null,
   };
 
