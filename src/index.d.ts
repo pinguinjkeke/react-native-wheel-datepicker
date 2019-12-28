@@ -8,7 +8,7 @@ interface PickerProps {
   itemStyle?: ReactNative.TextProps;
   onValueChange: (val: any) => void;
   pickerData: any[];
-  style: ReactNative.ViewProps;
+  style: ReactNative.ViewProps['style'];
   selectedValue: any;
 }
 
@@ -29,7 +29,7 @@ interface DatePickerAndroidProps {
   };
   order?: string;
   use12Hours?: boolean;
-  style?: ReactNative.ViewProps;
+  style?: ReactNative.ViewProps['style'];
   textColor?: string;
   textSize?: number;
   itemSpace?: number;
